@@ -439,11 +439,24 @@ addressbook.
 These loans will then be added to `loanList` inside `Model` class, similar to `viewloan` command. By default, the loans
 will be listed in order of the due date. The `LoanListPanel` will reflect the updated list of loans to display.
 
+The following sequence diagram showcases how the `viewallloans` command is executed through `Logic` class:
 
+![ViewAllLoansCommandSequenceDiagram](images/ViewAllLoansCommandSequenceDiagram.png)
 
+#### Design Considerations
 
+##### Aspect: Updating the GUI
 
+* **Alternative 1 (current choice):** The GUI updates are done through updating the `loanList` in the `Model` component.
+    * Pros: Follows the observer design pattern, reducing coupling between the `Model` and `MainWindow` components.
+    * Pros: Reuses the previous implementation of the `LoanListPanel` to display the loans.
+    * Cons: To display GUI for all loans, the filteredPersonList must be cleared since the loans of all contacts are
+      displayed
 
+* **Alternative 2:** Declare a new `ObservableList` in the `Model` component to store all loans.
+    * Pros: More explicit control over the GUI updates
+    * Cons: Increases the complexity of the `MainWindow` which may have to handle 3 different displays at once,
+      complicating the toggling between the different displays.
 
 --------------------------------------------------------------------------------------------------------------------
 
