@@ -5,7 +5,6 @@ skinparam ArrowFontStyle plain
 box Logic LOGIC_COLOR_T1
 participant ":LogicManager" as LogicManager LOGIC_COLOR
 participant ":AddressBookParser" as AddressBookParser LOGIC_COLOR
-participant ":ViewAllLoansCommandParser" as ViewAllLoansCommandParser LOGIC_COLOR
 participant "v:ViewAllLoansCommand" as ViewAllLoansCommand LOGIC_COLOR
 participant "r:CommandResult" as CommandResult LOGIC_COLOR
 end box
@@ -20,50 +19,33 @@ activate LogicManager
 LogicManager -> AddressBookParser : parseCommand("viewallloans")
 activate AddressBookParser
 
-create ViewAllLoansCommandParser
-AddressBookParser -> ViewAllLoansCommandParser
-activate ViewAllLoansCommandParser
+create ViewAllLoansCommand
+AddressBookParser -> ViewAllLoansCommand
+activate ViewAllLoansCommand
+ViewAllLoansCommand --> AddressBookParser
+deactivate ViewAllLoansCommand
 
-DeleteCommandParser --> AddressBookParser
-deactivate DeleteCommandParser
-
-AddressBookParser -> DeleteCommandParser : parse("1")
-activate DeleteCommandParser
-
-create DeleteCommand
-DeleteCommandParser -> DeleteCommand
-activate DeleteCommand
-
-DeleteCommand --> DeleteCommandParser :
-deactivate DeleteCommand
-
-DeleteCommandParser --> AddressBookParser : d
-deactivate DeleteCommandParser
-'Hidden arrow to position the destroy marker below the end of the activation bar.
-DeleteCommandParser -[hidden]-> AddressBookParser
-destroy DeleteCommandParser
-
-AddressBookParser --> LogicManager : d
+AddressBookParser --> LogicManager : v
 deactivate AddressBookParser
 
-LogicManager -> DeleteCommand : execute(m)
-activate DeleteCommand
+LogicManager -> ViewAllLoansCommand : execute(m)
+activate ViewAllLoansCommand
 
-DeleteCommand -> Model : deletePerson(1)
+ViewAllLoansCommand -> Model : setLoanList(...)
 activate Model
-
-Model --> DeleteCommand
-deactivate Model
+Model --> ViewAllLoansCommand
 
 create CommandResult
-DeleteCommand -> CommandResult
+ViewAllLoansCommand -> CommandResult
 activate CommandResult
-
-CommandResult --> DeleteCommand
+CommandResult --> ViewAllLoansCommand
 deactivate CommandResult
 
-DeleteCommand --> LogicManager : r
-deactivate DeleteCommand
+ViewAllLoansCommand --> LogicManager : r
+deactivate ViewAllLoansCommand
+
+
+
 
 [<--LogicManager
 deactivate LogicManager
