@@ -402,27 +402,48 @@ The update behaviour is achieved through the use of `ObservableList` objects in 
 component listens for changes in the `ObservableList` objects and updates the GUI accordingly.
 
 The `LoanListPanel` (similar to `PersonListPanel`) is responsible for displaying the list of loans attached to a
-contact.
+contact. It generates new `LoanCard` objects according to the `loanList` in the `Model` class.
+To accommodate the new GUI component, the `MainWindow.java` file is updated to include the new `LoanListPanel`.
 
-To accommodate the new GUI component, the `MainWindow.java` file is updated to include the new `LoanListPanel`. To
-ensure
-that only either the loan list or the person list is displayed, an additional `BooleanProperty` is added to the `Model`
-component
-to act as a flag to indicate which list is currently being displayed. This flag is updated by corresponding commands and
-the update
-switches the display between the two lists inside `MainWindow` by disabling one or the other.
+To ensure that only either the loan list or the person list is displayed, an additional `BooleanProperty` is added to
+the `Model`
+component to act as a flag to indicate which list is currently being displayed. This flag is updated by corresponding
+commands.
+For instance, commands such as `list` will toggle the flag to false, while `viewloan` will toggle the flag to true.
+This update switches the display between the two lists inside `MainWindow`.
 
 #### Design Considerations
 
 ##### Aspect: How the GUI is updated
 
 * **Alternative 1 (current choice):** The GUI updates are done by the `Model` component's observable properties.
-    * Pros: Reduces coupling between the `Model` and `MainWindow` components.
+    * Pros: Follows the observer design pattern, reducing coupling between the `Model` and `MainWindow` components.
     * Cons: The GUI updates are restricted to the observable properties of the `Model` component.
 
 * **Alternative 2:** The GUI updates are done by the `MainWindow` component.
     * Pros: More explicit control over the GUI updates.
-    * Cons: `Model` needs a reference to `MainWindow` to update the GUI. This increases coupling between the components.
+    * Cons: `Model` needs a reference to `MainWindow` to update the GUI directly. This increases coupling between the
+      components.
+
+### View all loans command - Kyal Sin Min Thet (to be implemented in v1.3)
+
+#### Proposed Implementation
+
+The `viewallloans` command will display all active loans in the addressbook.
+
+The parsing will be done by the `ViewAllLoansCommandParser` class, which will be instantiated in the `AddressBookParser`
+class.
+
+The execution of this command will iterate through all the contacts and their respective `loanRecords` in the
+addressbook.
+These loans will then be added to `loanList` inside `Model` class, similar to `viewloan` command. By default, the loans
+will be listed in order of the due date. The `LoanListPanel` will reflect the updated list of loans to display.
+
+
+
+
+
+
 
 --------------------------------------------------------------------------------------------------------------------
 
