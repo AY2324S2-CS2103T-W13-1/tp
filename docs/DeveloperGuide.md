@@ -563,7 +563,7 @@ Precondition: `list` command shows a numbered list of contacts.
 Use case ends.
 
 #### Extensions
-- 1a. Index is invalid (e.g. negative, zero, or larger than the list size)
+- 1a. Index is invalid (e.g. negative, zero, or larger than the list size).
   - 1a1. System shows an error message in the status message.
   - Use case ends.
 
@@ -598,7 +598,7 @@ Use case ends.
 
 #### Extensions
 
-- 1a. Person index is invalid (e.g. negative, zero, or larger than the list size)
+- 1a. Person index is invalid (e.g. negative, zero, or larger than the list size).
   - 1a1. System shows an error message in the status message.
   - Use case ends.
 
@@ -616,7 +616,7 @@ Use case ends.
 
 #### Extensions
 
-- 1a. Index is invalid (e.g. negative, zero, or larger than the list size)
+- 1a. Index is invalid (e.g. negative, zero, or larger than the list size).
   - 1a1. System shows an error message in the status message.
   - Use case ends.
 
@@ -632,7 +632,7 @@ Use case ends.
 
 #### Extensions
 
-- 1a. Index is invalid (e.g. negative, zero, or larger than the list size)
+- 1a. Index is invalid (e.g. negative, zero, or larger than the list size).
     - 1a1. System shows an error message in the status message.
     - Use case ends.
 
@@ -648,7 +648,7 @@ Use case ends.
 
 #### Extensions
 
-- 1a. Index is invalid (e.g. negative, zero, or larger than the list size)
+- 1a. Index is invalid (e.g. negative, zero, or larger than the list size).
   - 1a1. System shows an error message that the index is invalid.
   - Use case ends.
 
@@ -684,7 +684,7 @@ testers are expected to do more *exploratory* testing.
 
 1. Initial launch
 
-    1. Download the jar file and copy into an empty folder
+    1. Download the jar file and copy into an empty folder.
 
     1. Double-click the jar file Expected: Shows the GUI with a set of sample contacts. The window size may not be
        optimum.
@@ -845,7 +845,7 @@ Team size: 5
     A better error message would be something like "Please run the list command before running this command again".
 2. When entering an email for a new person in the form of  `name@domain`(e.g. `jameshoexample@com`), an error message should be displayed and
     the new person shouldn't be added, as opposed to the current behaviour. This is because emails are typically
-    in the form of `local-part@mail-server.domain`(`jameshoexample@gmail.com`)
+    in the form of `local-part@mail-server.domain`(`jameshoexample@gmail.com`).
 3. Detect duplicate names, including case-insensitive ones. For example, if we have a person named "John Doe",
     we should not be able to add another person named "john doe".
 4. Do not allow the `/` character inside any field when adding a new person, since it is a special character for prefixes.
@@ -873,16 +873,16 @@ Order is roughly according to when they first appear in the guide.
   when a particular command is executed.
 * **API**: Application Programming Interface, a set of rules that allows different software applications
   to communicate with each other to form an entire system.
-* **UI**: User Interface
+* **UI**: User Interface.
 * **OOP**: Object-Oriented Programming, a programming paradigm based on the concept of "objects",
   which can contain data and code: data in the form of fields, and code in the form of procedures.
   The objects interact with each other.
 * **Class**: Classes are used to create and define objects. A feature of OOP.
 * **JSON**: JavaScript Object Notation, a lightweight data-interchange format. Files of this format
   are used to store loan data on the hard disk.
-* **Data archiving**: The process of moving data that is no longer actively used to a separate storage
-* **CLI**: Command Line Interface
-* **GUI**: Graphical User Interface
+* **Data archiving**: The process of moving data that is no longer actively used to a separate storage.
+* **CLI**: Command Line Interface.
+* **GUI**: Graphical User Interface.
 * **User stories**: A user story is an informal, general explanation of a software feature written from the
   perspective of the end user.
 * **Cash**: Money in the form of coins or notes, as opposed to cheques or credit. *All loans in this project
@@ -895,5 +895,5 @@ Order is roughly according to when they first appear in the guide.
 * **Extensions**: The alternative paths through a use case.
 * **Non-Functional Requirements**: A requirement that specifies criteria that can be used to judge the operation of
   a system, rather than specific behaviours.
-* **Mainstream OS**: Windows, Linux, Unix, or MacOS
+* **Mainstream OS**: Windows, Linux, Unix, or MacOS.
 * **Jar file**: A Java Archive file, used to distribute a set of Java classes or applications as a single file.
